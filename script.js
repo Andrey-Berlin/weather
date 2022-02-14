@@ -161,7 +161,7 @@ function Details(data) {
             ${day}° 
        </div>
         <div class="temp">
-            <div class="heading">Температура Ночью:</div>
+            <li class="heading">Температура Ночью:</li>
             ${night}° 
         </div>`
 
@@ -189,7 +189,7 @@ function Details(data) {
             <div class="card">
                 <li class="time">${moment(day.dt * 1000).format('hh:mm')} <span>${moment(day.dt * 1000).format('A')}</span></li>
   <li class="temp">${day.temp}°C</li>
-                <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" srcset="">
+                <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" srcset="">
                
 
             </div>
@@ -211,7 +211,7 @@ function Details(data) {
         <div class="card">
                 <li class="time">${moment(day.dt * 1000).format('dddd')} <span></span></li>
                                   <li class="temp">${day.temp.day}°C</li>
-                <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" srcset="">
+                <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" srcset="">
 
               
             </div>
