@@ -161,7 +161,7 @@ function Details(data) {
             ${day}° 
        </div>
         <div class="temp">
-            <div class="heading">Температура Ночью:</div>
+            <li class="heading">Температура Ночью:</li>
             ${night}° 
         </div>`
 
