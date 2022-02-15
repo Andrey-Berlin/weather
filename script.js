@@ -24,8 +24,8 @@ const hourlyForecastEI = document.querySelector('.hourly-forecast');
 const dailyForecastEI = document.querySelector('.daily-forecast');
 
 
-const days = ["Вс.", "Пн.", "Вт.", "Ср.", "Чт.", "Пт.", "Суб."];
-const months = ["Янв.", "Феб.", "Март", "Апр.", "Май", "Июнь", "Июль", "Авг.", "Сен.", "Окт.", "Нояб.", "Дек."];
+const days = ["Вс.", "Пн.", "Вт.", "Ср.", "Чт.", "Пт.", "Суб.",];
+const months = ["Янв.", "Феб.", "Март", "Апр.", "Май", "Июнь", "Июль", "Авг.", "Сен.", "Окт.", "Нояб.", "Дек.",];
 
 
 //getting current location
@@ -93,15 +93,15 @@ function Details(data) {
     //Time date section
     clearInterval(clearC);
     clearC = setInterval(() => {
-        const month = moment(dt * 1000).format('MM');
+        const month = moment(dt * 1000).format('MMM');
         const year = moment(dt * 1000).format('YYYY');
-        const date = moment(dt * 1000).format('DD');
+        const date = moment(dt * 1000).format('LL');
         const day = moment(dt * 1000).format('dddd');
         const timezoneInMinutes = data.timezone_offset / 60;
-        timeEI.innerHTML = moment().utcOffset(timezoneInMinutes).format("hh:mm") + " " + `<span class="am-pm">${moment().utcOffset(timezoneInMinutes).format("A")}</span>`;
+        timeEI.innerHTML = moment().utcOffset(timezoneInMinutes).format("hh:mm:ss") + " " + `<span class="am-pm">${moment().utcOffset(timezoneInMinutes).local("A")}</span>`;
 
         dayEI.innerHTML = day + ',';
-        dateEI.innerHTML = date + ' ' + months[month] + ' ' + year;
+        dateEI.innerHTML = date;
     }, 1000);
 
 
@@ -161,7 +161,7 @@ function Details(data) {
             ${day}° 
        </div>
         <div class="temp">
-            <li class="heading">Температура Ночью:</li>
+            <div class="heading">Температура Ночью:</div>
             ${night}° 
         </div>`
 
@@ -172,10 +172,10 @@ function Details(data) {
     pressureEI.innerHTML = pressure;
     wind_speedEI.innerHTML = wind_speed;
 
-    sunriseEI.innerHTML = moment(sunrise * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(sunrise * 1000).format('A')}</span>`;
-    sunsetEI.innerHTML = moment(sunset * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(sunset * 1000).format('A')}</span>`;
-    moonriseEI.innerHTML = moment(moonrise * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(moonrise * 1000).format('A')}</span>`;
-    moonsetEI.innerHTML = moment(moonset * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(moonset * 1000).format('A')}</span>`;
+    sunriseEI.innerHTML = moment(sunrise * 1000).format('h:mm') + " " + `<span class="am-pm">${moment(sunrise * 1000).local('')}</span>`;
+    sunsetEI.innerHTML = moment(sunset * 1000).format('h:mm') + " " + `<span class="am-pm">${moment(sunset * 1000).local('')}</span>`;
+    moonriseEI.innerHTML = moment(moonrise * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(moonrise * 1000).local('')}</span>`;
+    moonsetEI.innerHTML = moment(moonset * 1000).format('hh:mm') + " " + `<span class="am-pm">${moment(moonset * 1000). local('')}</span>`;
 
     //==================================================================== + + =============================================================
 
@@ -187,7 +187,7 @@ function Details(data) {
             hourlyforecast += `
  <hr />
             <div class="card">
-                <li class="time">${moment(day.dt * 1000).format('hh:mm')} <span>${moment(day.dt * 1000).format('A')}</span></li>
+                <li class="time">${moment(day.dt * 1000).format('hh:mm')} <span>${moment(day.dt * 1000). local('')}</span></li>
   <li class="temp">${day.temp}°C</li>
                 <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" srcset="">
                
